@@ -94,7 +94,7 @@ fn shuffle_deck(deck: &mut Vec<Card>) {
         //Generate index
         let index = random_in_range(0u, deck.len() - 1);
         //Move to end
-        match (*deck).swap_remove(index) {
+        match deck.swap_remove(index) {
             Some(card) => deck.push(card),
             None => println!("Something is wrong with our deck!")
         }
