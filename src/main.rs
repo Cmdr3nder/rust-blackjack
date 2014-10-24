@@ -89,32 +89,23 @@ impl Clone for Card {
 }
 
 fn main() {
-    let mut deck: Vec<Card> = vec![];
-    deck.push_all(shuffle_deck(create_deck()).as_slice());
+    let mut deck: Vec<Card> = create_deck();
+    shuffle_deck(&mut deck);
     for card in deck.iter() {
         card.print();
     }
 }
 
-fn shuffle_deck(deck: Vec<Card>) -> Vec<Card> {
-    let mut shuffled: Vec<Card> = vec![];
-    let mut indicies: Vec<uint> = Vec::from_fn(deck.len() - 1, |idx| idx);
-
+fn shuffle_deck(deck: &mut Vec<Card>) {
     for _x in range(0u, 1000u) {
         //Generate index
-        let index = random_in_range(0u, indicies.len() - 1);
+        let index = random_in_range(0u, deck.len() - 1);
         //Move to end
-        match indicies.swap_remove(index) {
-            Some(card_index) => indicies.push(card_index),
+        match (*deck).swap_remove(index) {
+            Some(card) => deck.push(card),
             None => println!("Something is wrong with our deck!")
         }
     }
-
-    for card_index in indicies.iter() {
-        shuffled.push(deck[*card_index]);
-    }
-
-    shuffled
 }
 
 fn random_in_range(x: uint, y: uint) -> uint{ //Inclusive
@@ -123,7 +114,7 @@ fn random_in_range(x: uint, y: uint) -> uint{ //Inclusive
 }
 
 fn create_deck() -> Vec<Card> {
-    let mut deck: Vec<Card> = vec![];
+    let mut deck: Vec<Card> = Vec::new();
 
     let suit_array = [
         Clubs,
