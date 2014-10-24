@@ -10,10 +10,10 @@ pub enum Suit {
 impl fmt::Show for Suit {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            Clubs => write!(f, "Clubs"),
-            Diamonds => write!(f, "Diamonds"),
-            Spades => write!(f, "Spades"),
-            Hearts => write!(f, "Hearts")
+            Clubs => write!(f, "♣"),
+            Diamonds => write!(f, "♦"),
+            Spades => write!(f, "♠"),
+            Hearts => write!(f, "♥")
         }
     }
 }

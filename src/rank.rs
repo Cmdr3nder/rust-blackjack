@@ -19,7 +19,7 @@ pub enum Rank {
 impl fmt::Show for Rank {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            Ace => write!(f, "Ace"),
+            Ace => write!(f, "A"),
             Two => write!(f, "2"),
             Three => write!(f, "3"),
             Four => write!(f, "4"),
@@ -29,9 +29,9 @@ impl fmt::Show for Rank {
             Eight => write!(f, "8"),
             Nine => write!(f, "9"),
             Ten => write!(f, "10"),
-            Jack => write!(f, "Jack"),
-            Queen => write!(f, "Queen"),
-            King => write!(f, "King")
+            Jack => write!(f, "J"),
+            Queen => write!(f, "Q"),
+            King => write!(f, "K")
         }
     }
 }
